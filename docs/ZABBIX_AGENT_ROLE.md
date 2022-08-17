@@ -90,24 +90,23 @@ To successfully complete the install the role requires `python-netaddr` on the c
 
 See the following list of supported Operating systems with the Zabbix releases:
 
-| Zabbix              | 6.0 | 5.4 | 5.2 | 5.0 (LTS)| 4.4 | 4.0 (LTS) | 3.0 (LTS) |
-|---------------------|-----|-----|-----|----------|-----|-----------|-----------|
-| Red Hat Fam 8       |  V  |  V  |  V  |  V       | V   |           |           |
-| Red Hat Fam 7       |  V  |  V  |  V  |  V       | V   | V         | V         |
-| Red Hat Fam 6       |  V  |  V  |  V  |  V       |     |           | V         |
-| Red Hat Fam 5       |  V  |  V  |  V  |  V       |     |           | V         |
-| Fedora              |     |     |     |          | V   | V         |           |
-| Ubuntu 20.04 focal  |  V  |  V  |  V  |  V       |     | V         |           |
-| Ubuntu 19.10 eoan   |     |     |     |          |     |           |           |
-| Ubuntu 18.04 bionic |  V  |  V  |  V  |  V       | V   | V         |           |
-| Ubuntu 16.04 xenial |     |     |  V  |  V       | V   | V         |           |
-| Ubuntu 14.04 trusty |     |     |  V  |  V       | V   | V         | V         |
-| Debian 10 buster    |  V  |  V  |  V  |  V       | V   |           |           |
-| Debian 9 stretch    |     |  V  |  V  |  V       | V   | V         |           |
-| Debian 8 jessie     |     |     |  V  |  V       | V   | V         | V         |
-| Debian 7 wheezy     |     |     |     |          |     | V         | V         |
-| macOS 10.15         |     |     |     |          | V   | V         |           |
-| macOS 10.14         |     |     |     |          | V   | V         |           |
+| Zabbix              | 6.2 | 6.0 | 5.4 | 5.2 | 5.0 (LTS)| 4.4 | 4.0 (LTS) | 3.0 (LTS) |
+|---------------------|-----|-----|-----|-----|----------|-----|-----------|-----------|
+| Red Hat Fam 8       |  V  |  V  |  V  |  V  |  V       | V   |           |           |
+| Red Hat Fam 7       |  V  |  V  |  V  |  V  |  V       | V   | V         | V         |
+| Red Hat Fam 6       |  V  |  V  |  V  |  V  |  V       |     |           | V         |
+| Red Hat Fam 5       |     |  V  |  V  |  V  |  V       |     |           | V         |
+| Fedora              |     |     |     |     |          | V   | V         |           |
+| Ubuntu 20.04 focal  |  V  |  V  |  V  |  V  |  V       |     | V         |           |
+| Ubuntu 18.04 bionic |  V  |  V  |  V  |  V  |  V       | V   | V         |           |
+| Ubuntu 16.04 xenial |  V  |  V  |  V  |  V  |  V       | V   | V         |           |
+| Ubuntu 14.04 trusty |  V  |  V  |  V  |  V  |  V       | V   | V         | V         |
+| Debian 10 buster    |  V  |  V  |  V  |  V  |  V       | V   |           |           |
+| Debian 9 stretch    |  V  |     |  V  |  V  |  V       | V   | V         |           |
+| Debian 8 jessie     |     |     |     |  V  |  V       | V   | V         | V         |
+| Debian 7 wheezy     |     |     |     |     |          |     | V         | V         |
+| macOS 10.15         |     |     |     |     |          | V   | V         |           |
+| macOS 10.14         |     |     |     |     |          | V   | V         |           |
 
 # Getting started
 
@@ -135,7 +134,7 @@ The following is an overview of all available configuration default for this rol
 
 ### Overall Zabbix
 
-* `zabbix_agent_version`: This is the version of zabbix. Default: 6.0. Can be overridden to 5.4, 5.2 5.0, 4.4, 4.0, 3.4, 3.2, 3.0, 2.4, or 2.2. Previously the variable `zabbix_version` was used directly but it could cause [some inconvenience](https://github.com/dj-wasabi/ansible-zabbix-agent/pull/303). That variable is maintained by retrocompativility.
+* `zabbix_agent_version`: This is the version of zabbix. Default: The highest supported version for the operating system. Can be overridden to 6.2, 6.0, 5.4, 5.2 5.0, 4.4, 4.0, 3.4, 3.2, 3.0, 2.4, or 2.2. Previously the variable `zabbix_version` was used directly but it could cause [some inconvenience](https://github.com/dj-wasabi/ansible-zabbix-agent/pull/303). That variable is maintained by retrocompativility.
 * `zabbix_agent_version_minor`: When you want to specify a minor version to be installed. Is also used for `zabbix_sender` and `zabbix_get`. RedHat only. Default set to: `*` (latest available)
 * `zabbix_repo`: Default: `zabbix`
   * `epel`: install agent from EPEL repo
@@ -211,6 +210,7 @@ Otherwise it just for the Zabbix Agent or for the Zabbix Agent 2.
 * `zabbix_agent(2)_zabbix_alias`: sets an alias for parameter. it can be useful to substitute long and complex parameter name with a smaller and simpler one. Can be both a string as an list.
 * `zabbix_agent(2)_timeout`: spend no more than timeout seconds on processing
 * `zabbix_agent(2)_include`: you may include individual files or all files in a directory in the configuration file.
+* `zabbix_agent(2)_include_pattern`: Optional file pattern used for included files.
 * `zabbix_agent(2)_include_mode`: The mode for the directory mentioned above.
 * `zabbix_agent(2)_unsafeuserparameters`: allow all characters to be passed in arguments to user-defined parameters.
 * `zabbix_agent_loadmodulepath`: Full path to location of agent modules.
